@@ -1,0 +1,93 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+
+<zk>
+    <div self="@define(content)" align="center"
+        apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.UsuarioViewModel')"
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+        <div> 
+         <grid width="450px">
+         	<columns>
+         		<column align="center"></column>
+         	</columns>
+         	<rows>
+               <row>
+        		<vlayout> Formulario de Usuário </vlayout>
+        		</row>
+            </rows>
+        	</grid>
+        </div>
+        <grid width="450px">
+        	<columns>
+        		<column align="center"></column>
+        		<column align="left"></column>
+        	</columns>
+            <rows>
+               <row>
+               <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			            Tipo de funcionário:</cell>
+                        <combobox selectedItem="@save(fx.tipousuario)" value="@load(fx.tipousuario eq '0'?'Aluno':'Funcionario')">
+						        <comboitem label="Aluno" description="Usuário que frequenta a Academia, possui poucas permissões no sistema." 
+						        value="0"/>  
+						        <comboitem label="Funcionario" description="Usuário do sistema com permissão para suas principais funcionalidades."
+						        value="1"/>  
+						</combobox>
+            	</row>
+            
+                <row>
+                <cell sclass="row-title">
+                       <label style="color: red" value="*" />
+			            Nome:</cell>
+                    <hlayout>
+                        <textbox value="@bind(fx.nome)"
+                            width="150px" tabindex="2" />
+                    </hlayout>
+                </row>
+                <row>
+                <cell sclass="row-title">
+                       <label style="color: red" value="*" />
+			           Senha:</cell>
+                    <textbox type="password" value="@bind(fx.senha)"
+                        width="150px" tabindex="3" />
+                </row>
+				<row>
+				<cell sclass="row-title">
+				   <label style="color: red" value="*" />
+			            Confirmação de Senha:</cell>
+               
+                    <textbox type="password" value="@bind(vm.keyword)"
+                        width="150px" tabindex="3" />
+                </row>
+                <row>
+                <cell sclass="row-title">
+                     <label style="color: red" value="*" />
+			            Estado:</cell>
+                        <hlayout>							
+							<combobox selectedItem="@save(fx.ativo)" value="@load(fx.ativo eq 'true'?'Ativo':'Desativado')">
+							  
+							        <comboitem label="Ativo" description="O usuário estará ativo no sistema e poderá ser utilizado..." value="true" />  
+					
+							   
+							        <comboitem label="Desativado" description="O usuário terá seus dados salvo no banco, porém estará indisponível para o sistema." value="false" />   
+							</combobox>
+                        </hlayout>
+            	</row>
+            
+						<row>
+	                     <cell sclass="row-title">  </cell>
+	                      <hlayout>
+	                        <label style="color: red; font-size:8pt"  value="* Campos obrigatórios" /> 
+	                    </hlayout>
+	                </row>
+                <row>
+                       <button label="Cancelar" onClick="@command('closeWindows')"
+                                width="100px" height="30px" />
+                       <button label="Salvar" onClick="@command('salvar')"
+                                width="100px" height="30px" />
+                </row>
+            </rows>
+        </grid>
+    </div>
+</zk>

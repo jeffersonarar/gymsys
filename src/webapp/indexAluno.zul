@@ -1,0 +1,12 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/templateAluno.zul"?>
+<zk>
+	<window self="@define(content)"
+	 apply="org.zkoss.bind.BindComposer"
+    	viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.AlunoViewModel')"
+		>	
+    <div align="center">
+    	<label sclass="header-text">Pagina do Aluno </label>
+    	<label sclass="header-text">Deverá carregar dados aluno Logado...</label>
+	</div>
+	</window>
+</zk>

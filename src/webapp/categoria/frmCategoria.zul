@@ -1,0 +1,79 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+
+<zk>
+    <div self="@define(content)" align="center"
+        apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.CategoriaViewModel')"
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+        <div> 
+         <grid width="450px">
+         	<columns>
+         		<column align="center"></column>
+         	</columns>
+         	<rows>
+               <row>
+        		<vlayout> Formulario de Categoria </vlayout>
+        		</row>
+            </rows>
+        	</grid>
+        </div>
+        <grid width="450px">
+        	<columns>
+        		<column align="center"></column>
+        		<column align="left"  ></column>
+        	</columns>
+        <rows>
+        	
+        	<row>
+              <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Nome:</cell>
+            <cell>
+                <textbox value="@bind(fx.nome)"
+                    constraint="no empty: Campo obrigatório"
+                        width="75%"/>
+            </cell>
+        </row>
+        <row>
+              <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Super-categoria:</cell>
+            <cell>
+            	 <listbox model="@load(vm.categoriaList)"
+                        mold="select" width="200px"
+                        selectedItem="@save(vm.categoriaselecionada)">
+                        <template name="model">
+                            <listitem label="@load(each.nome)"/>
+                        </template>
+                  </listbox>
+            </cell>
+        </row>
+        <row>
+            <cell sclass="row-title">Descrição:</cell>
+            <cell>
+                <textbox rows="4" value="@bind(fx.descricao)"
+              
+                    width="75%"/>
+            </cell>
+        </row>
+           	<row>
+	                     <cell sclass="row-title">  </cell>
+	                      <hlayout>
+	                        <label style="color: red; font-size:8pt"  value="* Campos obrigatórios" /> 
+	                    </hlayout>
+	                </row>
+      
+        <row>
+            <cell >  
+            	<button label="Cancelar" onClick="@command('closeWindows')"
+                  width="100px" height="30px" /></cell>
+            <cell>
+               <button label="Salvar" onClick="@command('salvar')"
+                  width="100px" height="30px" />
+            </cell>
+        </row>
+    </rows>
+        </grid>
+    </div>
+</zk>

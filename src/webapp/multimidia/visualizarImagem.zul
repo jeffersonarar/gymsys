@@ -1,0 +1,10 @@
+<window autag="true" popup="true"  id="imagem" title="Detalhe  Imagem " border="normal"  height="65%" width="65%"
+       apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.MultimidiaViewModel')"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp"
+    self="@define(content)"   
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+        	<image  id="imagens" style="align:center" height="100%" width="100%"/>        
+</window>

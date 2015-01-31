@@ -1,0 +1,269 @@
+<zk>
+	<zscript>
+	
+	</zscript>
+	<style>
+		<![CDATA[
+		                
+		    .itemNotPublished .z-listcell-cnt{
+		    	color: #8F8F27;
+		    }
+		    
+		    .itemDeleted .z-listcell-cnt{
+		    	color: red;
+		    }
+		                
+		    span.unity .filteredSearch.z-combobox .z-combobox-inp{
+		    	text-transform: uppercase;
+		    }
+		    
+		    span.unityRequiredField .filteredSearch.z-combobox .z-combobox-inp{
+		    	text-transform: uppercase;
+		    	font-weight: bold;
+	    		background: #e9f6f8;
+		    }
+		                
+		    .styleTop{
+		    	background: #e9f6f8;
+		    	overflow: visible;
+		    }
+		                
+		    input.z-textbox {
+		    	height: 15px;
+		    }
+		    
+		    .title-t1{
+		    	font-weight: bold;
+		    	font-size: 14px;
+		    }
+		    
+		    /* Inicio Campo Obrigatórios */
+			    .requiredField{
+			    	font-weight: bold;
+			    	background: #e9f6f8;
+			    }
+			        
+		 	    .requiredField.z-combobox .z-combobox-inp {
+		 	    	background: #e9f6f8;
+		 	   		font-weight: bold;
+		 	    }
+		 	    
+		 	   .requiredField.z-datebox .z-datebox-inp {
+			    	background: #e9f6f8;
+		 	  		font-weight: bold;
+			    }
+	 	   /* Fim Campo Obrigatórios */ 
+	 	   
+		    .heavy{
+		    	font-weight: bold;
+		    }
+		    .zcenterd42{
+		    	font-weight: bold;
+		    position:absolute;
+			left:25%;
+			top:30%;
+		    }
+		    
+		    /*Histórico de Navegação*/
+		    table.z-hbox.navigation a {
+		    	padding: 5px;
+		    	color: #DA1212;
+		    	text-decoration: initial;
+		  	 	font-size: 12px;
+		    } 
+		             
+		    table.z-hbox.navigation a:hover {
+		    	color: #27B62D;
+		    }
+			
+
+			
+			/*Footer*/
+			.footer .z-vlayout.footer{
+				text-align: center;
+				background-color: #000000;
+				color: white;
+				
+			}
+
+			.banner .z-vlayout.banner{
+				text-align: center;
+				background-color: #DCDCDC;
+			    height=70px;
+				color: white;
+			}
+
+			.tituloBanner .z-label.tituloBanner{
+				font-size: 70px;
+			}
+			
+			/*Modal de Confirmação da pessoa no evento*/
+			.modalConfirmation.z-window{
+				background: #2C297C;
+			}
+			.modalConfirmation.z-window .z-window-header{
+				color: #CFE915;
+				font-size: 23px;
+			}
+			
+			/*Propriedade Grid*/ 
+			.nostyle.z-grid {
+				border: none;
+			}
+			
+			.nostyle tr.z-grid-odd td.z-row-inner,
+			.nostyle tr.z-grid-odd .z-cell {
+				border-left: 1px solid transparent;
+				background-color: #FFFFFF;
+				border-top: 1px solid #FFFFFF;
+				border-bottom: 1px solid #FFFFFF;
+				border-left: 1px solid #FFF;
+			}
+			
+			.nostyle td.z-row-inner,{
+				border-left: 1px solid transparent;
+				background-color: #FFFFFF;
+				border-top: 1px solid #FFFFFF;
+				border-bottom: 1px solid #FFFFFF;
+				border-left: 1px solid #FFF;
+			}
+			
+			.nostyle tr.z-row-over > td.z-row-inner {
+				border-top: 1px solid #FFFFFF;
+				border-bottom: 1px solid #FFFFFF;
+			}
+			
+			.nostyle tr.z-row-over > td.z-row-inner, tr.z-row-over > .z-cell {
+				background-image: none;
+			}
+			
+			/*Teste Novas Janelas*/
+			.z-groupbox-3d>.z-groupbox-header {
+				background: linear-gradient(to bottom, #0719E2 0%, #706CDD 100%);
+			}
+			
+			.z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{
+				min-height: 20px;
+				height: 20px;
+			}
+			
+			body {
+				background-color: #EBE3E3;
+			}
+			
+			/*Groupbox*/
+			.z-groupbox.frmGroupbox .z-groupbox-header span.z-caption-cnt,
+			.z-groupbox.frmGroupbox .z-groupbox-title-cnt {
+				display: -moz-inline-box;
+				display: inline-block;
+				background-color: #FFFFFF;
+				font-size: 30px;
+				font-family: arial, helvetica, serif;
+				padding-left: 3px;
+				padding-right: 3px;
+			}
+			
+			.z-groupbox.frmGroupbox .z-groupbox-hm {
+				position: relative;
+				top: -25px;
+			}
+			
+			.z-groupbox.frmGroupbox .z-caption-cnt{
+				position: relative;
+				top: 7px;
+				font-size: 20px;
+			}
+			
+			.z-groupbox.frmGroupbox .z-groupbox-hr {
+				position: relative;
+				top: 12px;
+				height: 37px;
+				border: 1px solid black;
+				border-bottom: none;
+			}
+			
+			.z-groupbox .z-groupbox-hr {
+				-webkit-border-top-left-radius: 8px;
+				-webkit-border-top-right-radius: 8px;
+				-moz-border-radius-topleft: 8px;
+				-moz-border-radius-topright: 8px;
+				border-top-left-radius: 8px;
+				border-top-right-radius: 8px;
+			}
+			
+			.z-groupbox.frmGroupbox .z-groupbox-cnt {
+				overflow: hidden;
+				padding: 5px;
+				border: 1px solid black;
+				border-top: none;
+			}
+			
+			.z-groupbox .z-groupbox-cnt {
+				-webkit-border-bottom-right-radius: 8px;
+				-webkit-border-bottom-left-radius: 8px;
+				-moz-border-radius-bottomright: 8px;
+				-moz-border-radius-bottomleft: 8px;
+				border-bottom-right-radius: 8px;
+				border-bottom-left-radius: 8px;
+			}
+			
+			.visualizar.z-groupbox .z-groupbox-cnt {
+				border: 1px solid #2DA71C;
+				-webkit-border-top-right-radius: 8px;
+				-webkit-border-top-left-radius: 8px;
+				-moz-border-radius-topright: 8px;
+				-moz-border-radius-topleft: 8px;
+				border-top-right-radius: 8px;
+				border-top-left-radius: 8px;
+			}
+			
+			.z-groupbox.frmGroupbox .z-label,
+			.z-groupbox.frmGroupbox .z-radio-cnt{
+				color: black;
+			}
+			
+			div.z-paging{
+				text-align: left;
+			}
+			
+			.incactive-hierarchy
+			{
+				color:#FF0000
+			}
+			
+			.organ-hierarchy
+			{
+				color:#99CC32;
+			}
+			
+			.unity-hierarchy
+			{
+				color:#007FFF;
+				font-weight: bold;
+			}
+			
+			.function-hierarchy
+			{
+				color:#FF7F00;
+			}
+			
+			.tree
+			{
+				padding:0px;
+				border:0px;
+			    font-size:12px;
+			}
+			
+			/*
+			CSS Para colocar letras sempre em maiúscula
+			*/
+			.uppercase {
+				
+				}
+			
+			/*
+			CSS END
+			*/
+		]]>
+	</style>
+</zk>

@@ -1,0 +1,31 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/templateFree.zul"?>
+<zk>
+	<window self="@define(content)"
+	 apply="org.zkoss.bind.BindComposer"
+    	viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.LoginViewModel')"
+		>	
+    <div align="center">
+    	<zk xmlns:h="xhtml" xmlns:zk="zk">
+			<html>
+			  <head>
+			  </head>
+			  <body>
+			  <div>
+			   	<h2>Bem Vindo ao Gymsys</h2>
+			 	<br/>
+			 	<h3>O Sistema que te ajudará a entrar em forma</h3>
+			 	<br/>
+			 	<br/>
+			  </div>
+			  <div>
+			  	<br/>
+			  	 <img src="../../com.gymsys/img/logo1.png"  ></img>
+			  	<br/>
+			  	<br/>
+			  </div>    
+			  </body>
+			</html>
+		</zk>
+	</div>
+	</window>
+</zk>

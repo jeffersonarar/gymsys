@@ -1,0 +1,77 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/templateAluno.zul"?>
+
+<zk>
+    <div self="@define(content)"
+        apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.AlunoViewModel')"
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')" align="left">
+	 <grid width="550px">
+        
+           	<columns>
+        		<column align="center"></column>
+        		<column align="center" width="150px"></column>
+        		<column align="center" ></column>
+        		<column align="center"></column>
+        		<column align="center" width="150px"></column>
+        		<column align="center" ></column>
+        	</columns>
+            <rows>
+                 <row>
+             
+                    <label value="Altura:" width="50px" />
+                    <doublespinner value="@bind(fx.altura)" step="0.01" format="###.##" width="80px" tabindex="2"/>
+                    <label value="Mt" />
+
+                    <label value="Peso:" width="50px" />
+                    <doublespinner value="@bind(fx.peso)" step="0.01" format="###.##" width="80px" tabindex="3"/>
+                    <label value="KG" />
+                    
+                </row>
+                 <row>
+                    <label value="Cintura:" width="150px" />
+                    <doublespinner value="@bind(fx.cintura)" step="0.01" format="###.##" width="80px" tabindex="4"/>
+                    <label value="Cm" />
+
+                    <label value="Antebraço:" width="50px" />
+                    <doublespinner value="@bind(fx.antebraco)" step="0.01" format="###.##" width="80px" tabindex="5"/>
+                    <label value="Cm" />
+ 				  </row>
+                 <row>
+                    <label value="Torax:" width="50px" />
+                    <doublespinner value="@bind(fx.torax)" step="0.01" format="###.##" width="80px" tabindex="6"/>
+                    <label value="Cm" />
+
+                    <label value="Abdomen:" width="50px" />
+                    <doublespinner value="@bind(fx.abdomen)" step="0.01" format="###.##" width="80px" tabindex="7"/>
+                    <label value="Cm" />
+                </row>
+                 <row>
+                    <label value="Pescoço:" width="50px" />
+                    <doublespinner value="@bind(fx.pescoco)" step="0.01" format="###.##" width="80px" tabindex="8"/>
+                    <label value="Cm" />
+
+                    <label value="Coxa:" width="50px" />
+                    <doublespinner value="@bind(fx.coxa)" step="0.01" format="###.##" width="80px" tabindex="9"/>
+                    <label value="Cm" />
+                </row>
+                 <row>
+                    <label value="Ombro:" width="50px" />
+                    <doublespinner value="@bind(fx.ombro)" step="0.01" format="###.##" width="80px" tabindex="10"/>
+                    <label value="Cm" />
+                 </row>
+                <row>
+                	<label value=" " />
+                    <button label="Cancelar" onClick="@command('closeWindows')"
+                            width="100px" height="30px" /> 
+                    <label value=" " /> 
+                    <label value=" " /> 
+                    <button label="Salvar" onClick="@command('salvar')"
+                             width="100px" height="30px" />
+                </row>
+       </rows>
+   </grid>
+   
+
+</div> 
+</zk>

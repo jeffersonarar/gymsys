@@ -1,0 +1,24 @@
+<window autag="true" popup="true"  id="imagem" title="Detalhe  Videos " border="normal"  height="700px" width="700px"
+       apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.MultimidiaViewModel')"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp"
+    self="@define(content)"   
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+  		<!--<flash src="/video/Bon Jovi.swf" wmode="window" quality="high" /> -->
+  		<zk xmlns:h="xhtml" xmlns:zk="zk">
+	<html>
+		
+	</html>
+	
+	<h:video width="600" height="400" controls="controls" >
+	 <h:source src="bon3.mp4"  type="video/mp4"> 
+	 </h:source>
+	</h:video>
+	
+	<zscript>
+		
+	</zscript>
+</zk>
+</window>

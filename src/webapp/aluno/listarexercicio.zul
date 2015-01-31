@@ -1,0 +1,110 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/templateAluno.zul"?>
+<zk>
+<div self="@define(content)" apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm') @init('br.ueg.unucet.gymsys.View.ExercicioAlunoViewModel')" align="center">
+    <div>
+    <hbox align="center">
+        <textbox value="@bind(vm.keyword)" />
+        <button label="pesquisar" image="/img/lente.jpg" onClick="@command('listar')" />
+         <checkbox checked="@bind(vm.displayEdit)"
+             label="Exibor apenas Ativos">
+         </checkbox>
+    </hbox>
+    </div>
+    <listbox model="@load(vm.exercicioList)" emptyMessage="Nenhum Exercício Encontrado." width="800px"
+    selectedItem="@bind(vm.selectedEntity)" style="margin-top:10px" mold="paging" pageSize="10">
+        	<auxhead>
+        <auxheader colspan="3" class="topic"> 
+              <button label="Mais Informação" onClick="@command('listarDetalheExercicio')" />
+        </auxheader> 
+        </auxhead>
+        <listhead>
+        	<listheader align="center" sort="auto(exercicio.idcategoria.nome)"> 
+            	<combobox onChange="@command('ListCategoria')"  model="@load(vm.categoriaList)" 
+			                        selectedItem="@bind(vm.categoriaselecionada)">
+			                        <template name="model" >
+			                            <comboitem label="@load(each.nome)"/>
+			                        </template>
+			    </combobox>
+            	<label value="Categoria"  />
+			</listheader>
+            <listheader  label="Nome Exercício" align="center" sort="auto(exercicio.nome)" />
+            <listheader label="Responsavel" align="center" sort="auto(exercicio.responsavel)" />
+        </listhead>
+        <template name="model" var="item">
+       		<listitem onMouseOver="@command('popupMessage', target=self, content=item.exercicio.nome, content2=item.imagem.multimidia)">
+                <listcell label="@bind(item.exercicio.idcategoria.nome)"></listcell>
+                <listcell label="@bind(item.exercicio.nome)"></listcell>
+                <listcell label="@bind(item.exercicio.responsavel)"></listcell>
+            </listitem>
+        </template>
+    </listbox>
+     <popup id="msg" height="100px" width="100px">
+       <vlayout style="align:center">
+			<toolbarbutton label="@bind(vm.selectedEntity.exercicio.nome)" style="align:center"/>
+			<div>
+			</div>
+	</vlayout>
+    </popup>
+    <popup id="msgPopup" height="100px" width="100px">
+    <label id="msg2"></label>
+    <image  id="image" style="align:center" height="100%" width="100%"/> 
+	</popup>
+    
+    <style>
+		.profile { width:60px; height:60px; } .p-data { padding-top:5px;
+		}
+	</style>
+	<zscript><![CDATA[
+        import java.awt.*;
+        import java.awt.image.*;
+        import java.awt.geom.*;
+        boolean odd = false;
+        boolean odd1 = false;
+         
+        void update() {
+        	 image.setSrc("../../com.gymsys/img/erro.jpg");     
+        }
+    ]]></zscript>
+    
+    
+    <window autag="true" popup="true" visible="false" id="windowDesativar"  border="normal" width="460px" position="center,center" 
+ 			action="show: slideDown;hide: slideUp" >
+	       <div>
+	        <div> 
+	         <grid>
+	         	<columns>
+	         		<column align="center"></column>
+	         	</columns>
+	         	<rows>
+	               <row>
+	        		<vlayout> Deseja realmente desativar? </vlayout>
+	        		</row>
+	            </rows>
+	        	</grid>
+	        </div>
+	       
+	        <grid>
+	        	<columns>
+	        		<column align="center"></column>
+	        		<column align="left"></column>
+	        	</columns>
+	            <rows>
+	                <row>
+	                    <label value="Nome:" width="50px" />
+	                    <hlayout>
+	                        <label value="@bind(fx.aluno.nome)" width="150px" />
+	                    </hlayout>
+	                </row>
+	                <row>    
+	                 <button label="Cancelar" onClick="@command('cancelar')" width="100px" height="30px" />
+	                 <button label="Desativar" onClick="@command('desativar')" width="100px" height="30px" />
+	                </row>
+	            </rows>
+	        </grid>
+	    </div>
+	</window> 
+	
+</div>
+	
+</zk>
