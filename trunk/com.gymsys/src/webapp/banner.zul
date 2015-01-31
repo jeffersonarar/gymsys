@@ -1,0 +1,5 @@
+<vlayout focus="true" sclass="banner" >	
+
+	<label sclass="tituloBanner"  style="font-size: 35px; font-weight:bold" value="PORTAL GYMSYS" />
+	
+</vlayout>

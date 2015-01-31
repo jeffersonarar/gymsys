@@ -1,0 +1,45 @@
+<zk xmlns:n="native">
+    <menubar id="menubar" autodrop="true">
+        <menu label="Cadastros">
+            <menupopup>
+                 <menu label="Categorias">
+                    <menupopup>
+                        <menuitem label="cadastro" href="/categoria/frmCategoria.zul" />
+                    </menupopup>
+                </menu>
+                <menu label="Exercicios">
+                      <menupopup>
+                        <menuitem label="inserir" href="/exercicio/frmExercicio.zul" />
+                    </menupopup>
+                </menu> 
+                <menu label="Usuarios">
+                    <menupopup>
+                        <menuitem label="cadastro" href="/usuario/frmUsuario.zul" />
+                    </menupopup>
+                </menu>
+            </menupopup>
+        </menu>
+        <menu label="Consultas">
+            <menupopup>
+                <menuitem label="usuarios"  href="/usuario/listarUsuario.zul?action=1"/>
+                <menuitem label="categorias"  href="/categoria/listarCategoria.zul?action=1"/>
+                <menuitem label="exercicios" href="/exercicio/listarexercicio.zul?action=1" />
+                 <menuitem label="alunos" href="/aluno/listarAluno.zul?action=1"/>
+            </menupopup>
+        </menu>
+        <menu label="Multimidia">
+             <menupopup>
+                <menuitem label="cad. exercicio"  href="/multimidia/frmMultimidia.zul"/>
+                <menuitem label="cad. categoria"  href="/multimidia/frmMultimidia1.zul"/>
+                <menuitem label="cad. aluno"  href="/multimidia/frmMultimidia2.zul"/>
+                <menuitem label="consultar"  href="/multimidia/listarMultimidia.zul?action=1"/>
+            </menupopup>
+        </menu>
+        <menu label="Relatórios">
+             <menupopup>
+                <menuitem label="Ficha de treino"  href="/fichaTreino/frmFichaTreino.zul"/>
+                <menuitem label="Histórico"  href="/aluno/historico.zul"/>
+            </menupopup>
+        </menu>
+    </menubar>
+</zk>

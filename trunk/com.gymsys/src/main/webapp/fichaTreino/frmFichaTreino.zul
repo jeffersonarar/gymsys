@@ -1,0 +1,205 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+<zk>
+	<div self="@define(content)"
+	    apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.FichaTreinoViewModel')"
+		validationMessages="@id('vmsgs')"
+	    form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')" align="center">
+	    <grid width="700px">
+	         <auxhead>
+	            <auxheader colspan="4" align="center" label="Ficha de Treino" />
+	         </auxhead>
+	        	<columns>
+	        		<column width="350%"></column>
+	        		<column width="650%"></column>
+	        		<column width="350%"></column>
+	        			<column width="650%"></column>
+	        	</columns>
+	        	   <rows>  
+	 			        <row>
+			            <cell sclass="row-title">Aluno:</cell>
+	                    <hlayout>
+	                        <textbox id="nomeAluno" 
+	                          tabbable="true"   disabled="true"  width="150px;" tabindex="11"/>
+	                           <button label="P"  onClick="@command('buscarAluno')" />
+	                    </hlayout>
+	                    
+	                   
+			            <cell sclass="row-title">Categoria:</cell>
+			            <cell>
+			            	<combobox onChange="@command('getSubcategoriaList')"    model="@load(vm.categoriaList)" 
+			                        width="75%"
+			                        selectedItem="@save(vm.categoriaselecionada)">
+			                        <template name="model" >
+			                            <comboitem label="@load(each.nome)"/>
+			                        </template>
+			            	</combobox>
+			      
+			            </cell>
+		
+					</row>			 
+		
+					<row>
+			            <cell sclass="row-title">Dia da semana:</cell>
+			            <cell>
+			            	 <listbox   model="@load(vm.semanaList)" 
+			                        mold="select" width="75%"
+			                        selectedItem="@save(vm.semanaselecionada)" >
+			                        <template name="model" >
+			                            <listitem label="@load(each.descricao)"/>
+			                        </template>
+			                  </listbox>
+			            </cell>
+			 
+			            <cell sclass="row-title">Sub-Categoria:</cell>
+			            <cell>
+			            	<combobox onChange="@command('getExercicioList')"   model="@load(vm.subcategoriaList)" 
+			                        width="75%"
+			                        selectedItem="@save(vm.subcategoriaselecionada)">
+			                        <template name="model" >
+			                            <comboitem label="@load(each.nome)"/>
+			                        </template>
+			            	</combobox>
+			            </cell>
+			
+			            
+			            
+			            
+			            
+					</row>   
+					<row>
+			            <cell sclass="row-title">Qtd. de series</cell>
+			            <cell>
+			            	 <listbox   model="@load(vm.serieList)" 
+			                        mold="select" width="75%"
+			                        selectedItem="@save(vm.serieselecionada)" >
+			                        <template name="model" >
+			                            <listitem label="@load(each.id)"/>
+			                        </template>
+			                  </listbox>
+			            </cell>
+			            
+			           
+			            <cell sclass="row-title">Exercicio:</cell>
+			            <cell>
+			            	<combobox onChange=""   model="@load(vm.exercicioList)" 
+			                        width="75%"
+			                        selectedItem="@save(vm.exercicioselecionado)">
+			                        <template name="model" >
+			                            <comboitem label="@load(each.nome)"/>
+			                        </template>
+			            	</combobox>
+			            </cell>
+				
+					</row>   
+					<row>
+	                     <cell sclass="row-title">Repetição:</cell>
+	                    <hlayout>
+	                        <textbox value="@bind(fx.repeticao)"
+	                          tabbable="true"     width="150px;" tabindex="11"/>
+	                    </hlayout>
+	                </row>
+
+
+
+					              
+					<row >
+						<cell align="right">
+							<button label="Cancelar" onClick="@command('closeWindows')" width="100px" height="30px" />
+						</cell>
+						<cell align="center">
+							<button label="Salvar" onClick="@command('salvar')" width="100px" height="30px" />
+						</cell>
+					</row>
+	            </rows>
+	    </grid>
+	    <hbox align="center" id="vboxRelatorio">
+	       
+	    </hbox>
+	      <listbox model="@bind(vm.fichaList)"
+	    	selectedItem="@bind(vm.selectedEntity)" style="margin-top:10px" mold="paging" pageSize="6">
+	    	         <auxhead>
+                <auxheader colspan="7" class="topic"> <button label="Visualizar ficha"  onClick="@command('gerarRelatorio')" />
+                </auxheader>
+               
+            </auxhead>
+	        <listhead>
+	            <listheader label="Categoria" align="center" sort="auto(nome)" />
+	            <listheader label="Sub-categoria" align="center" sort="auto(descricao)" />
+	            <listheader label="Exercicio" align="center" sort="auto(ativo)" />
+	              <listheader label="Serie" width="90px" align="center"/>
+	            <listheader  label="Repetições" width="90px" align="center"/>
+	            <listheader  label="Dias da Semana" align="center"/>
+	                 <listheader  label="" width="90px" align="center"/>
+	        </listhead>
+	        <template name="model">
+	            <listitem>
+	                <listcell label="@bind(each.exercicio.idcategoria.supcategoria.nome)"></listcell>
+	                <listcell label="@bind(each.exercicio.idcategoria.nome)"></listcell>
+	                <listcell label="@bind(each.exercicio.nome)"></listcell>
+	                <listcell label="@bind(each.serie)"></listcell>
+	                <listcell label="@bind(each.repeticao)"></listcell>
+	                <listcell label="@bind(each.semana)"></listcell>
+	               	<listcell > <button label="X" onClick="@command('perguntarDesativar', idfichatreino={each.idfichatreino})" /></listcell>
+	            </listitem>
+	        </template>
+	    </listbox> 
+
+	    <window  autag="true" popup="true" border="normal" id="windowAluno" visible="false" title="Pesquisar aluno" width="600px" height="450px">
+		   	<hbox align="center">
+		        <textbox value="@bind(vm.keyword)" />
+		        <button label="pesquisar" image="/img/lente.jpg" onClick="@command('getAlunoList')" />
+		    </hbox>
+		    <listbox model="@bind(vm.alunoList)" emptyMessage="Nenhum Aluno Selecionado."
+		    	selectedItem="@bind(vm.alunoselecionada)" style="margin-top:10px" mold="paging" pageSize="7">
+		        <listhead>
+		            <listheader label="Nome" align="center" sort="auto(nome)" />
+		            <listheader label="Cpf" align="center" sort="auto(cpf)" />    
+		        </listhead>
+		        <template name="model">
+		            <listitem>
+		                <listcell label="@bind(each.nome)"></listcell>
+		                <listcell label="@bind(each.cpf)"></listcell>
+		            </listitem>
+		        </template>
+		    </listbox>
+		    <hbox align="center">
+		        <button label="cancelar" onClick="@command('close')" />
+		        <button label="confirmar" onClick="@command('confirmar')"  />
+		    </hbox>
+	    </window>   
+	    
+	
+	    <window autag="true" popup="true" visible="false" id="windowDesativar"  border="normal" width="460px" position="center,center" 
+ 			action="show: slideDown;hide: slideUp" >
+	       <div>
+	        <div> 
+	         <grid>
+	         	<columns>
+	         		<column align="center"></column>
+	         	</columns>
+	         	<rows>
+	               <row>
+	        		<vlayout> Deseja realmente desativar? </vlayout>
+	        		</row>
+	            </rows>
+	        	</grid>
+	        </div>
+	       
+	        <grid>
+	        	<columns>
+	        		<column align="center"></column>
+	        		<column align="left"></column>
+	        	</columns>
+	            <rows>
+
+	                <row>    
+	                 <button label="Cancelar" onClick="@command('cancelar')" width="100px" height="30px" />
+	                 <button label="Desativar" onClick="@command('desativar')" width="100px" height="30px" />
+	                </row>
+	            </rows>
+	        </grid>
+	    </div>
+	</window>   
+    </div> 
+</zk>

@@ -1,0 +1,17 @@
+<window autag="true" popup="true"  id="imagem" title="Detalhe  Videos " border="normal"  height="65%" width="65%"
+       apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.MultimidiaViewModel')"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp"
+    self="@define(content)"   
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+  
+       <div>
+       	<zk xmlns:n="native">
+    <n:video controls="width=20" width="320" height="240" autoplay="" >
+    <n:source  src="video/SKRILLEX .mp4" type="video/mp4"> </n:source>
+	</n:video>
+</zk>
+       </div>
+</window>

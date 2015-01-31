@@ -1,0 +1,31 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	      <listbox model="@bind(vm.fichaList)"
+	    	selectedItem="@bind(vm.selectedEntity)" style="margin-top:10px" mold="paging" pageSize="6">
+	    	         <auxhead>
+                <auxheader colspan="7" class="topic"> <button label="Visualizar ficha"  onClick="@command('gerarRelatorio')" />
+                </auxheader>
+               
+            </auxhead>
+	        <listhead>
+	            <listheader label="Categoria" align="center" sort="auto(nome)" />
+	            <listheader label="Sub-categoria" align="center" sort="auto(descricao)" />
+	            <listheader label="Exercicio" align="center" sort="auto(ativo)" />
+	              <listheader label="Serie" width="90px" align="center"/>
+	            <listheader  label="Repetições" width="90px" align="center"/>
+	            <listheader  label="Dias da Semana" align="center"/>
+	                 <listheader  label="" width="90px" align="center"/>
+	        </listhead>
+	        <template name="model">
+	            <listitem>
+	                <listcell label="@bind(each.exercicio.idcategoria.supcategoria.nome)"></listcell>
+	                <listcell label="@bind(each.exercicio.idcategoria.nome)"></listcell>
+	                <listcell label="@bind(each.exercicio.nome)"></listcell>
+	                <listcell label="@bind(each.serie)"></listcell>
+	                <listcell label="@bind(each.repeticao)"></listcell>
+	                <listcell label="@bind(each.semana)"></listcell>
+	               	<listcell > <button label="X" onClick="@command('perguntarDesativar', idfichatreino={each.idfichatreino})" /></listcell>
+	            </listitem>
+	        </template>
+	    </listbox> 
+</zk>

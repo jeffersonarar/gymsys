@@ -1,0 +1,15 @@
+<zk xmlns:n="native">
+    <menubar id="menubar" autodrop="true">
+    	  
+    	     <menu label="Meus dados">
+            <menupopup>
+    			<menuitem label="Dados"  href="/aluno/dadosAluno.zul" />
+       			<menuitem label="Alterar medidas"  href="/aluno/medidas.zul" />
+              	
+            </menupopup>
+        </menu>
+   	    <menuitem label="Ficha de treino"  href="/fichaTreino/fichaTreinoAluno.zul?action=1" />
+        <menuitem label="Histórico"  href="/aluno/historicoAluno.zul?action=1"/>
+        <menuitem label="Consultar Exercício"  href="/aluno/listarexercicio.zul?action=1"/>
+    </menubar>
+</zk>

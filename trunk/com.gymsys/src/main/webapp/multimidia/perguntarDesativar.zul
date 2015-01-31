@@ -1,0 +1,58 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+<zk>
+ 
+<window autag="true" popup="true" id="modalDialog"  border="normal" width="460px"
+      apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.MultimidiaViewModel')"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp"
+
+    self="@define(content)"
+      
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+       <div>
+        <div> 
+         <grid>
+         	<columns>
+         		<column align="center"></column>
+         	</columns>
+         	<rows>
+               <row>
+        		<vlayout> Deseja realmente desativar? </vlayout>
+        		</row>
+            </rows>
+        	</grid>
+        </div>
+       
+        <grid>
+        	<columns>
+        		<column align="center"></column>
+        		<column align="left"></column>
+        	
+        	</columns>
+            <rows>
+                <row>
+                    <label value="Nome:" width="50px" />
+                    <hlayout>
+                        <label value="@bind(fx.nome)" width="150px" />
+                    </hlayout>
+                </row>
+                <row>
+                    <label value="Estado:" width="50px" />
+                    <hlayout>
+                        <label value="@load(fx.ativo eq 'true'?'Ativo':'Desativado')" width="150px" />
+                    </hlayout>
+            	</row>
+                <row>    
+                           <button label="Cancelar" onClick="@command('fechar')"
+                                width="100px" height="30px" />
+                           <button label="Desativar" onClick="@command('desativar')"
+                                width="100px" height="30px" />
+                </row>
+            </rows>
+        </grid>
+    </div>
+   
+</window>
+</zk>

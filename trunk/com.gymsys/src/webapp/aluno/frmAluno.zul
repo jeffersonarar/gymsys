@@ -1,0 +1,156 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+
+<zk>
+    <div self="@define(content)" align="center"
+        apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.AlunoViewModel')"
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+	   <grid>
+
+	</grid>
+  <tabbox id="tb" width="680px">
+   
+    <tabs id="tabs">
+        <tab id="A" label="Dados" />
+        <tab id="B" label="Medidas" />
+  
+    </tabs>
+    <tabpanels>
+    
+        <tabpanel> <grid>
+        	<columns>
+        		<column align="center"></column>
+        		<column align="left"></column>
+        	
+        	</columns>
+            <rows>
+            
+                <row>
+                  <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Nome:</cell>
+                    <hlayout>
+                        <textbox value="@bind(fx.nome)"
+                            width="150px" tabindex="1" />
+                    </hlayout>
+                </row>
+                <row>
+                    <label value="Cpf:" width="150px" />
+                    <textbox value="@bind(fx.cpf)"
+                        width="150px" tabindex="2" maxlength="11"/>
+                </row>
+				 <row>
+                      <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Data de nascimento:</cell>
+                    <datebox value="@bind(fx.datanascimento)" tabindex="3" format="dd/MM/yyyy" />
+                </row>
+                 <row>
+                      <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Celular:</cell>
+                    <textbox value="@bind(fx.celular)"
+                        width="150px" tabindex="4" />
+                </row>
+            </rows>
+        </grid></tabpanel>
+        
+        <tabpanel><grid width="680px">
+        
+           	<columns>
+        		<column align="center" width="120px"></column>
+        		<column align="center" width="120px"></column>
+        		<column align="center" width="30px"></column>
+        		<column align="center" width="120px"></column>
+        		<column align="center" width="120px"></column>
+        		<column align="center" width="30px" ></column>
+        	</columns>
+            <rows>
+                 <row>
+             
+                      <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Altura:</cell>
+                    <doublespinner value="@bind(fx.altura)" step="0.01" format="###.##" width="80px" tabindex="2"/>
+                    <label value="Mt" />
+
+                   <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			            Peso:</cell>
+                    <doublespinner value="@bind(fx.peso)" step="0.01" format="###.##" width="80px" tabindex="3"/>
+                    <label value="KG" />
+                    
+                </row>
+                 <row>
+                      <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Cintura:</cell>
+                    <doublespinner value="@bind(fx.cintura)" step="0.01" format="###.##" width="80px" tabindex="4"/>
+                    <label value="Cm" />
+
+                       <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Antebraço:</cell>
+                    <doublespinner value="@bind(fx.antebraco)" step="0.01" format="###.##" width="80px" tabindex="5"/>
+                    <label value="Cm" />
+ 				  </row>
+                 <row>
+                       <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Torax:</cell>
+                    <doublespinner value="@bind(fx.torax)" step="0.01" format="###.##" width="80px" tabindex="6"/>
+                    <label value="Cm" />
+
+                       <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Abdomen:</cell>
+                    <doublespinner value="@bind(fx.abdomen)" step="0.01" format="###.##" width="80px" tabindex="7"/>
+                    <label value="Cm" />
+                </row>
+                 <row>
+                       <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Pescoço:</cell>
+                    <doublespinner value="@bind(fx.pescoco)" step="0.01" format="###.##" width="80px" tabindex="8"/>
+                    <label value="Cm" />
+
+                       <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Coxa:</cell>
+                    <doublespinner value="@bind(fx.coxa)" step="0.01" format="###.##" width="80px" tabindex="9"/>
+                    <label value="Cm" />
+                </row>
+                 <row>
+                       <cell sclass="row-title">
+			             <label style="color: red" value="*" />
+			             Ombro:</cell>
+                    <doublespinner value="@bind(fx.ombro)" step="0.01" format="###.##" width="80px" tabindex="10"/>
+                    <label value="Cm" />
+                 </row>
+                 
+						<row>
+	                     <cell sclass="row-title">  </cell>
+	                      <hlayout>
+	                        <label style="color: red; font-size:8pt"  value="* Campos obrigatórios" /> 
+	                    </hlayout>
+	                </row>
+                 
+                <row>
+                	<label value=" " />
+                    <button label="Cancelar" onClick="@command('closeWindows')"
+                            width="100px" height="30px" /> 
+                    <label value=" " /> 
+                    <label value=" " /> 
+                    <button label="Salvar" onClick="@command('salvar')"
+                             width="100px" height="30px" />
+                </row>
+       </rows>
+   </grid> </tabpanel>
+   
+   </tabpanels>
+</tabbox>
+
+
+</div> 
+</zk>

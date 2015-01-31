@@ -1,0 +1,65 @@
+<window autag="true" popup="true"  id="imagem42" title="Detalhe  Videos " border="normal" width="80%"
+       apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.AlunoMultimidiaViewModel')"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp"
+    self="@define(content)"   
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+  		<zk xmlns:h="xhtml" xmlns:zk="zk">
+  		<html>
+		<head>
+			  <title>Video.js | HTML5 Video Player</title>
+			  
+			  <!-- Chang URLs to wherever Video.js files will be hosted -->
+			  <link href="../../com.gymsys/multimidia/video-js.css" rel="stylesheet" type="text/css"> </link>
+			  <!-- video.js must be in the <head> for older IEs to work. -->
+			  <script src="../../com.gymsys/multimidia/video.js"></script>
+			
+			  <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+			  <script>
+			    videojs.options.flash.swf = "video-js.swf";
+			  </script>
+		</head>
+		<body>
+		<h:center>
+		<div>
+			<br/>
+			<h:h1>${vm.nomeEntidade}</h:h1>
+			<br/>
+			<br/>
+		</div>		
+		<div class="item">
+      		<img src="${vm.caminhoImagem}" alt="..."></img>
+		</div>
+		<div>
+			<br/>
+			<h:p>${vm.detalhe}</h:p>
+			<br/>
+			<br/>
+		</div>
+		<h:br/>
+		<div class="embed-responsive embed-responsive-16by9">
+		  <h:video id="example_video_1" class="video-js vjs-default-skin" controls="controls" preload="none" 
+		      
+		      data-setup="{}">
+		      
+		      
+		    <h:source src="${vm.caminhoVideo}" type='video/webm'> </h:source>
+		    
+		    <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+		    <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+		    <h:p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></h:p>
+		  </h:video>
+		  	<br/>
+			<br/>
+		 </div>
+</h:center> 
+</body>
+</html>
+	
+	<zscript>
+		
+	</zscript>
+</zk>
+</window>

@@ -1,0 +1,12 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+<zk>
+	<window self="@define(content)"
+	 apply="org.zkoss.bind.BindComposer"
+    	viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.UsuarioViewModel')"
+		>	
+    <div align="center">
+    	<label sclass="header-text">Pagina do Funcionario.. </label>
+    	<label sclass="header-text">Deverá carregar dados do Funcionário Logado...</label>
+	</div>
+	</window>
+</zk>

@@ -1,0 +1,112 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+
+<zk>
+    <div self="@define(content)"
+        apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.ExercicioViewModel')"
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+        <div> 
+         <grid>
+         	<columns>
+         		<column align="center"></column>
+         	</columns>
+         	<rows>
+               <row>
+        		<vlayout> Formulario de Exercício </vlayout>
+        		</row>
+            </rows>
+        	</grid>
+        </div>
+        <grid>
+        	<columns>
+        		<column align="center"></column>
+        		<column align="left"  ></column>
+        	</columns>
+        <rows>
+        	
+        	<row>
+            <cell sclass="row-title">Nome:</cell>
+            <cell>
+                <textbox value="@bind(fx.nome)"
+                    constraint="no empty: Campo obrigatório não preenchido."
+                        width="75%"/>
+            </cell>
+        </row>
+        <row>
+            <cell sclass="row-title">Categoria do Exercicio :</cell>
+            <cell>
+            	 <listbox   model="@load(vm.categoriaList)"
+                        mold="select" width="75%"
+                        selectedItem="@save(vm.categoriaselecionada)" >
+                        <template name="model" >
+                            <listitem label="@load(each.nome)"/>
+                        </template>
+                  </listbox>
+            </cell>
+        </row>
+        <row>
+            <cell sclass="row-title">Responsável :</cell>
+            <cell>
+                <textbox value="@bind(fx.responsavel)"
+                	constraint="no empty: Campo obrigatório não preenchido."
+                	width="75%" />
+            </cell>
+        </row>
+        <row>
+            <cell sclass="row-title">Descrição :</cell>
+            <cell>
+                <textbox rows="5" value="@bind(fx.descricao)"
+                constraint="no empty: Campo obrigatório não preenchido."
+                    width="75%"/>
+            </cell>
+        </row>
+        <row>
+            <cell >  
+            	<button label="Cancelar" onClick="@command('closeWindows')"
+                  width="100px" height="30px" /></cell>
+            <cell>
+               <button label="Salvar" onClick="@command('salvar')"
+                  width="100px" height="30px" />
+            </cell>
+        </row>
+    </rows>
+        </grid>
+          <window autag="true" popup="true" visible="false" id="windowDesativar"  border="normal" width="460px" position="center,center" 
+ 			action="show: slideDown;hide: slideUp" >
+	       <div>
+	        <div> 
+	         <grid>
+	         	<columns>
+	         		<column align="center"></column>
+	         	</columns>
+	         	<rows>
+	               <row>
+	        		<vlayout> Deseja realmente desativar? </vlayout>
+	        		</row>
+	            </rows>
+	        	</grid>
+	        </div>
+	       
+	        <grid>
+	        	<columns>
+	        		<column align="center"></column>
+	        		<column align="left"></column>
+	        	</columns>
+	            <rows>
+	                <row>
+	                    <label value="Nome:" width="50px" />
+	                    <hlayout>
+	                        <label value="@bind(fx.nome)" width="150px" />
+	                    </hlayout>
+	                </row>
+	                <row>    
+	                 <button label="Cancelar" onClick="@command('fechar')" width="100px" height="30px" />
+	                 <button label="Desativar" onClick="@command('desativar')" width="100px" height="30px" />
+	                </row>
+	            </rows>
+	        </grid>
+	    </div>
+	</window>  
+    </div>
+</zk>

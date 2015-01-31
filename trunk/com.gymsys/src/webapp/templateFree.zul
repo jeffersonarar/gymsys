@@ -1,0 +1,14 @@
+<zk xmlns:h="xhtml" xmlns:zk="zk">
+	
+
+	<include src="/styles/style.zul" />
+	<borderlayout hflex="1" vflex="1">
+		<north class="menu" border="none" sclass="styleTop" id="menu">
+			<include src="/menuFree.zul" />
+		</north>
+		<center id="mainContent" autoscroll="true" border="none" self="@insert(content)"> </center>
+		<south border="none" class="footer" size="15px" autoscroll="true" style="">
+			<include src="/footer.zul" />
+		</south>
+	</borderlayout>
+</zk>

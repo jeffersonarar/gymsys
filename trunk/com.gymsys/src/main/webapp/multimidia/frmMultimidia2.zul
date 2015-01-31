@@ -1,0 +1,82 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+<zk>
+    <div self="@define(content)"
+        apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.MultimidiaViewModel')"
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')" align="center">
+        <grid width="550px">
+         <auxhead>
+            <auxheader colspan="4" align="center" label="Multimidia" />
+        </auxhead>
+        
+        	<columns>
+        		<column width="150%"></column>
+        		<column width="400%"></column>
+        	
+        	</columns>
+        	
+            <rows>     
+                <row>
+                     <cell sclass="row-title">Nome:</cell>
+                    <hlayout>
+                        <textbox id="fldnome" value="@load(fx.nome)" constraint="no empty: Selecione uma multimidia"
+                            width="150px" disabled="true"/>
+                            <fileupload  id="fu" label="selecionar multimidia" onUpload="@command('upload')"  />
+                    </hlayout>
+                </row>
+               <row>
+                     <cell sclass="row-title">Descrição:</cell>
+                    <hlayout>
+                        <textbox value="@bind(fx.descricao)"
+                            width="250px" tabindex="2" tabbable="true" />
+                    </hlayout>
+                </row>
+        <row>
+            <cell sclass="row-title">Aluno:</cell>
+            <cell>
+            	 <listbox   model="@load(vm.alunoList)" 
+                        mold="select" width="75%"
+                        selectedItem="@save(vm.alunoselecionada)" >
+                        <template name="model" >
+                            <listitem label="@load(each.nome)"/>
+                        </template>
+                  </listbox>
+            </cell>
+		</row>
+		<row>
+            <cell sclass="row-title">Tipo de multimidia:</cell>
+            <cell>
+            	<combobox selectedItem="@save(fx.tipomultimidia)" value="@load(fx.tipomultimidia eq 'true'?'Imagem':'Video')" width="75%">
+					<comboitem label="Imagem"  value="true" />  
+					<comboitem label="Video" value="false" />  		 
+				</combobox>			
+            </cell>      
+        </row>                   
+				<row >
+					<cell align="right">
+						<button label="Cancelar" onClick="@command('closeWindows')" width="100px" height="30px" />
+					</cell>
+					<cell align="center">
+						<button label="Salvar" onClick="@command('salvar')" width="100px" height="30px" />
+					</cell>
+				</row>
+            </rows>
+        </grid>
+    </div>
+</zk>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

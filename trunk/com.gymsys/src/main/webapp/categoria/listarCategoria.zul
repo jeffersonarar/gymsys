@@ -1,0 +1,79 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+<zk>
+<div self="@define(content)" apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm') @init('br.ueg.unucet.gymsys.View.CategoriaViewModel')" align="center">
+    <hbox align="center">
+    <cell sclass="row-title">Categoria:</cell>
+			            <cell>
+			            	<combobox   model="@load(vm.categoriaList)" 
+			                        width="75%"
+			                        selectedItem="@save(vm.categoriaselecionada)">
+			                        <template name="model" >
+			                            <comboitem label="@load(each.nome)"/>
+			                        </template>
+			            	</combobox>
+			      
+			            </cell>
+        <textbox value="@bind(vm.keyword)" />
+        <button label="pesquisar" image="/img/lente.jpg" onClick="@command('listar')" />
+    </hbox>
+    <listbox model="@bind(vm.listCategoria)" emptyMessage="Nenhuma categoria selecionada."
+    selectedItem="@bind(vm.selectedEntity)" style="margin-top:10px" mold="paging" pageSize="6">
+        <listhead>
+            <listheader label="Nome" align="center" sort="auto(nome)" />
+            <listheader label="Descricao" align="center" sort="auto(descricao)" />
+               <listheader label="Super Categoria" align="center" sort="auto(supcategoria)" />
+            <listheader label="Estado" align="center" sort="auto(ativo)" />
+            <listheader width="90px" label="Aterar" align="center"/>
+            <listheader width="90px" label="Ati / Desativar" align="center" />
+        </listhead>
+        <template name="model">
+            <listitem>
+                <listcell label="@bind(each.nome)"></listcell>
+                 <listcell label="@bind(each.descricao)"></listcell>
+                 <listcell label="@bind(each.supcategoria.nome)"></listcell>
+                <listcell label="@bind(each.ativo eq 'true'?'Ativo':'Desativo')"></listcell>
+              	<listcell > <button label="Alterar" onClick="@command('telaAlterar', idcategoria={each.idcategoria})" /></listcell>
+               	<listcell > <button label="@bind(each.ativo eq 'true'?'Desativar':'Ativar')" onClick="@command('perguntarDesativar', idcategoria={each.idcategoria})" /></listcell>
+            </listitem>
+        </template>
+    </listbox>
+     <window autag="true" popup="true" visible="false" id="windowDesativar"  border="normal" width="460px" position="center,center" 
+ 			action="show: slideDown;hide: slideUp" >
+	       <div>
+	        <div> 
+	         <grid>
+	         	<columns>
+	         		<column align="center"></column>
+	         	</columns>
+	         	<rows>
+	               <row>
+	        		<vlayout> Deseja realmente desativar? </vlayout>
+	        		</row>
+	            </rows>
+	        	</grid>
+	        </div>
+	       
+	        <grid>
+	        	<columns>
+	        		<column align="center"></column>
+	        		<column align="left"></column>
+	        	</columns>
+	            <rows>
+	                <row>
+	                    <label value="Nome:" width="50px" />
+	                    <hlayout>
+	                        <label value="@bind(fx.aluno.nome)" width="150px" />
+	                    </hlayout>
+	                </row>
+	                <row>    
+	                 <button label="Cancelar" onClick="@command('cancelar')" width="100px" height="30px" />
+	                 <button label="Desativar" onClick="@command('desativar')" width="100px" height="30px" />
+	                </row>
+	            </rows>
+	        </grid>
+	    </div>
+	</window> 
+</div>
+</zk>
+

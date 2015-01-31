@@ -1,0 +1,39 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+<zk>
+<div self="@define(content)" apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm') @init('br.ueg.unucet.gymsys.View.AlunoViewModel')" align="center">
+   <div>
+    <hbox align="center">
+        <textbox value="@bind(vm.keyword)" />
+        <button label="pesquisar" image="/img/lente.jpg" onClick="@command('listar')" />
+         <checkbox checked="@bind(vm.displayEdit)"
+             label="Exibor apenas Ativos">
+         </checkbox>
+    </hbox>
+    </div>
+    <listbox model="@bind(vm.alunoList)" emptyMessage="Nenhum Aluno Selecionado." width="800px"
+    selectedItem="@bind(vm.selectedEntity)" style="margin-top:10px" mold="paging" pageSize="7">
+        	<auxhead>
+        <auxheader colspan="3" class="topic"> 
+              <button label="Alterar" onClick="@command('telaAlterar', idusuario={each.idusuario})" />
+               <label value="Para alterar selecione um item" style="color: blue; font-size:8pt"/>
+        </auxheader> 
+        </auxhead>
+    
+        <listhead>
+            <listheader label="Nome" align="center" sort="auto(nome)" />
+            <listheader label="Cpf" align="center" sort="auto(cpf)" />
+            <listheader label="Data de Nascimento" align="center" sort="auto(datanascimento)"/>        
+        </listhead>
+        <template name="model">
+            <listitem>
+                <listcell label="@bind(each.nome)"></listcell>
+                <listcell label="@bind(each.cpf)"></listcell>
+                <listcell label="@bind(each.datanascimento)  @converter('formatedDate',format='dd/MM/yyyy')"></listcell>
+            </listitem>
+        </template>
+    </listbox>
+</div>
+	
+</zk>
+

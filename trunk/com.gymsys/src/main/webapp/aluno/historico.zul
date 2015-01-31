@@ -1,0 +1,61 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+<zk>
+<div self="@define(content)" apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm') @init('br.ueg.unucet.gymsys.View.AlunoViewModel')" align="center"
+    form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')" >
+    <hbox align="center">
+        <textbox value="@bind(vm.keyword)" />
+        <button label="pesquisar" image="/img/lente.jpg" onClick="@command('listar')" />
+    </hbox>
+    <listbox model="@bind(vm.alunoList)" emptyMessage="Nenhum Aluno Selecionado."
+    selectedItem="@bind(vm.selectedEntity)" style="margin-top:10px" mold="paging" pageSize="7">
+        <listhead>
+       
+            <listheader label="Nome" align="center" sort="auto(nome)" />
+            <listheader width="90px" label="Aterar" align="center"/>
+                 
+        </listhead>
+        <template name="model">
+            <listitem>
+                <listcell label="@bind(each.nome)"></listcell>
+              	<listcell > <button label="Histórico" onClick="@command('listarHistorico')" /></listcell>
+            </listitem>
+        </template>
+    </listbox>
+        <window autag="true" popup="true" border="normal" id="windowAluno" visible="false" title="Histórico de Aluno" width="750px" height="450px">
+		    <listbox model="@bind(vm.alunoHistoricoList)" 
+		    	selectedItem="@bind(vm.selectedAluno)" style="margin-top:10px" mold="paging" pageSize="7">
+		        <listhead>
+		            <listheader label="Data de inserção" align="center" sort="auto(data)" />
+		            <listheader label="Peso" align="center" sort="auto(peso)" />
+		            <listheader label="Altura" align="center" sort="auto(altura)" />        
+		            <listheader label="Cintura" align="center" sort="auto(cintura)" />    
+		            <listheader label="Antebraco" align="center" sort="auto(antebraco)" />    
+		            <listheader label="Torax" align="center" sort="auto(torax)" />    
+		            <listheader label="Abdomen" align="center" sort="auto(abdomen)" />    
+		            <listheader label="Coxa" align="center" sort="auto(coxa)" />    
+		            <listheader label="Pescoco" align="center" sort="auto(pescoco)" />    
+		            <listheader label="Ombro" align="center" sort="auto(ombro)" />   
+		        </listhead>
+		        <template name="model">
+		            <listitem>
+		                <listcell  label="@bind(each.data) @converter('formatedDate', format='yyyy/MM/dd')"></listcell>
+		                <listcell label="@bind(each.peso)"></listcell>
+		                <listcell label="@bind(each.altura)"></listcell>
+		                <listcell label="@bind(each.cintura)"></listcell>
+		                <listcell label="@bind(each.antebraco)"></listcell>
+		                <listcell label="@bind(each.torax)"></listcell>
+		                <listcell label="@bind(each.abdomen)"></listcell>
+		                <listcell label="@bind(each.coxa)"></listcell>
+		                <listcell label="@bind(each.pescoco)"></listcell>
+		                <listcell label="@bind(each.ombro)"></listcell>
+		            </listitem>
+		        </template>
+		    </listbox>
+		    <hbox align="center">
+		        <button label="Cancelar" onClick="@command('close')" />
+		        <button label="Gerar" onClick="@command('gerarRelatorio')"  />
+		    </hbox>
+	    </window>
+</div>	
+</zk>

@@ -1,0 +1,7 @@
+<zk xmlns:n="native">
+    <menubar id="menubar" autodrop="true">
+    	<menuitem label="Meus Dados" />
+   	    <menuitem label="Ficha de treino"  href="/fichaTreino/frmFichaTreino.zul"/>
+        <menuitem label="Histórico"  href="/aluno/historicoAluno.zul"/>
+    </menubar>
+</zk>

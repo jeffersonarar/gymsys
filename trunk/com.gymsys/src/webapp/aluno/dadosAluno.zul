@@ -1,0 +1,110 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/templateAluno.zul"?>
+
+<zk>
+    <div self="@define(content)"
+        apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.AlunoViewModel')"
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')" align="left">
+	
+  <tabbox id="tb" width="500px">
+   
+    <tabs id="tabs">
+        <tab id="A" label="Dados" />
+        <tab id="B" label="Medidas" />
+  
+    </tabs>
+    <tabpanels>
+        <tabpanel> <grid>
+        	<columns>
+        		<column align="center"></column>
+        		<column align="left"></column>
+        	
+        	</columns>
+            <rows>
+            
+                <row>
+                    <label value="Nome:" width="50px" />
+                    <hlayout>
+                        <label value="@bind(fx.nome)"
+                            width="150px"/>
+                    </hlayout>
+                </row>
+                <row>
+                    <label value="Cpf:" width="150px" />
+                    <label value="@bind(fx.cpf)"
+                        width="150px"/>
+                </row>
+				 <row>
+                    <label value="Data de Nascimento:" width="150px" />
+                    <label value="@bind(fx.datanascimento)"/>
+                </row>
+                 <row>
+                    <label value="Celular:" width="150px" />
+                    <label value="@bind(fx.celular)"
+                        width="150px" />
+                </row>
+            </rows>
+        </grid></tabpanel>
+        
+        <tabpanel><grid>
+        
+           	<columns>
+        		<column align="center" width="80px"></column>
+        		<column align="center" width="50px"></column>
+        		<column align="center" width="30px"></column>
+        		<column align="center" width="80px"></column>
+        		<column align="center" width="50px"></column>
+        		<column align="center" width="30px"></column>
+        	</columns>
+            <rows>
+                 <row>
+             
+                    <label value="Altura:" width="50px" />
+                    <label value="@bind(fx.altura)"  width="80px" />
+                    <label value="Mt" />
+
+                    <label value="Peso:" width="50px" />
+                    <label value="@bind(fx.peso)" width="80px"/>
+                    <label value="KG" />
+                    
+                </row>
+                 <row>
+                    <label value="Cintura:" width="150px" />
+                    <label value="@bind(fx.cintura)" width="80px" />
+                    <label value="Cm" />
+
+                    <label value="Antebraço:" width="50px" />
+                    <label value="@bind(fx.antebraco)" width="80px"/>
+                    <label value="Cm" />
+ 				  </row>
+                 <row>
+                    <label value="Torax:" width="50px" />
+                    <label value="@bind(fx.torax)" width="80px" />
+                    <label value="Cm" />
+
+                    <label value="Abdomen:" width="50px" />
+                    <label value="@bind(fx.abdomen)" width="80px" />
+                    <label value="Cm" />
+                </row>
+                 <row>
+                    <label value="Pescoço:" width="50px" />
+                    <label value="@bind(fx.pescoco)" width="80px" />
+                    <label value="Cm" />
+
+                    <label value="Coxa:" width="50px" />
+                    <label value="@bind(fx.coxa)" width="80px"/>
+                    <label value="Cm" />
+                </row>
+                 <row>
+                    <label value="Ombro:" width="50px" />
+                    <label value="@bind(fx.ombro)"  width="80px"/>
+                    <label value="Cm" />
+                 </row>
+       </rows>
+   </grid> 
+   </tabpanel>
+   </tabpanels>
+</tabbox>
+</div> 
+</zk>

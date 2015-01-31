@@ -1,0 +1,63 @@
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/template.zul"?>
+<zk>
+ <vbox align="center" pack="center" >
+	
+<window autag="true" position="center,center" popup="true" id="modalDialog" title="Logar no Sistema" border="normal" 
+      apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.LoginViewModel')"
+     closable="true"
+    action="show: slideDown;hide: slideUp"
+
+    self="@define(content)"
+      
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+       <div>
+        <div> 
+         <grid>
+         	<columns>
+         		<column align="center"></column>
+         	</columns>
+         	<rows>
+               <row>
+        		<vlayout> Informe seu nome e senha para logar no sistema </vlayout>
+        		</row>
+            </rows>
+        	</grid>
+        </div>
+       
+        <grid>
+        	<columns>
+        		<column align="center"></column>
+        		<column align="left"></column>
+        	
+        	</columns>
+            <rows>
+                <row>
+                    <label value="Nome de login:" width="50px" />
+                    <hlayout>
+                     	<textbox value="@bind(vm.nome)"
+                            width="150px" tabindex="2" tabbable="true"/>
+                    </hlayout>
+                </row>
+                <row>
+                    <label value="Senha:" width="50px" />
+                    <hlayout>
+                    	<textbox type="password" value="@bind(vm.senha)"
+                        width="150px" tabindex="3" />
+                    </hlayout>
+            	</row>
+                <row>    
+                           <button label="Cancelar" onClick="@command('closeWindows')"
+                                width="100px" height="30px" />
+                           <button label="Logar" onClick="@command('logar')"
+                                width="100px" height="30px" />
+                </row>
+            </rows>
+        </grid>
+    </div>
+   
+</window>
+
+	</vbox>
+</zk>

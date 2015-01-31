@@ -1,0 +1,24 @@
+<window autag="true" popup="true" id="modalDialog" title="Logar no sistema" border="normal" width="460px"
+      apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm')@init('br.ueg.unucet.gymsys.View.LoginViewModel')"
+    position="center,center" closable="true"
+    action="show: slideDown;hide: slideUp"
+    self="@define(content)"   
+		validationMessages="@id('vmsgs')"
+        form="@id('fx') @load(vm.entity) @save(vm.entity, before='salvar')">
+       <grid sclass="loginGrid">
+			<columns>
+				<column hflex="1" />
+				<column hflex="2" />
+			</columns>
+			<rows>
+				<row>User Name : <textbox id="name" value="@bind(vm.nome)" /></row>
+				<row>Password : <textbox id="pwd" type="password" value="@bind(vm.senha)"/></row>
+				<row><cell sclass="loginCtl" colspan="2"><vlayout>
+					<button label="Logar" onClick="@command('logar')" width="100px"/>
+					<label id="mesg" />
+				</vlayout></cell></row>
+			</rows>
+		</grid>
+		
+	</window>

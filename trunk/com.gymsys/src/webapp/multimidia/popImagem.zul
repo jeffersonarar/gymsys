@@ -1,0 +1,6 @@
+<vlayout style="align:center">
+			<toolbarbutton label="@bind(vm.selectedEntity.exercicio.nome)" style="align:center"/>
+			<div>
+				<image  id="imagens" style="align:center" src="@load{vm.nomeImagem}" height="100%" width="100%"/> 
+			</div>
+		</vlayout>
