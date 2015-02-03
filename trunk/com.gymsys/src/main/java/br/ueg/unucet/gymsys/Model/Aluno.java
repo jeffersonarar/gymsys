@@ -26,7 +26,7 @@ public class Aluno extends Model<Integer>{
 	private Date datanascimento;
 	
 	@Campo(nome="celular",obrigatorio=false)
-	private Integer celular;
+	private String celular;
 	
 	
 	@Campo(nome="peso",obrigatorio=false)
@@ -95,11 +95,11 @@ public class Aluno extends Model<Integer>{
 		this.datanascimento = datanascimento;
 	}
 
-	public Integer getCelular() {
+	public String getCelular() {
 		return celular;
 	}
 
-	public void setCelular(Integer celular) {
+	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 
