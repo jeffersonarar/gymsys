@@ -1,5 +1,9 @@
 package br.ueg.unucet.gymsys.Util;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class Utils {
 	/**
 	 * Método que retorna string com a primeira letra em maiúscula, o restante permanece o mesmo.
@@ -37,4 +41,11 @@ public class Utils {
 		}
 		return Utils.totalLowerCase(resposta);
 	}
+	
+	public static Properties getProp() throws IOException {
+		 Properties props = new Properties(); 
+		 FileInputStream file = new FileInputStream( "C:/PROGII/Nova pasta/com.gymsys/src/main/java/br/ueg/unucet/gymsys/properties/config.properties"); 
+		 props.load(file); 
+		 return props; 
+	} 
 }
