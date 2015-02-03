@@ -1,10 +1,14 @@
 package br.ueg.unucet.gymsys.Connection;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
+
+import br.ueg.unucet.gymsys.Util.Utils;
 
 /*
  * Classe responsável por Criar conexão com o banco de dados da aplicacao....
@@ -18,18 +22,26 @@ public class Connect {
 	
 	public static boolean getConexao() {  
 	        try {  
-	            // Carregando o JDBC Driver padrão  
-	        	Class.forName("org.postgresql.Driver");
-	        	//System.out.println("JDBC driver carregado");
-	            // Configurando a nossa conexão com um banco de dados//  
-	        	//"jdbc:postgresql://localhost:5432/lan_manager","postgres","postgres"
-	            String url = "jdbc:postgresql://localhost:5432/academia";  
-	            String username = "postgres";        //nome de um usuário de seu BD        
-	            String password = "postgres";      //sua senha de acesso  
-	            connection = DriverManager.getConnection(url, username, password);
-	            statement = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-	            //System.out.println("Conectou");  
-	            return true;  
+	    		Properties prop = null;
+	    		try {
+					prop = Utils.getProp();
+					  // Carregando o JDBC Driver padrão  
+		        	Class.forName("org.postgresql.Driver");
+		        	//System.out.println("JDBC driver carregado");
+		            // Configurando a nossa conexão com um banco de dados//  
+		        	//"jdbc:postgresql://localhost:5432/lan_manager","postgres","postgres"
+		            String url = prop.getProperty("prop.server.urlBancoDados");  
+		            String username = prop.getProperty("prop.server.usuarioBancoDados");          //nome de um usuário de seu BD        
+		            String password = prop.getProperty("prop.server.senhaBancoDados");        //sua senha de acesso  
+		            connection = DriverManager.getConnection(url, username, password);
+		            statement = (Statement) connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+		            //System.out.println("Conectou");  
+		            return true;  
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					return false;  
+				}
 	        }  catch (ClassNotFoundException e) {  //Driver não encontrado  
 	            System.out.println("O driver expecificado nao foi encontrado.");  
 	            return false;  
