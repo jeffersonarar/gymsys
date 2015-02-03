@@ -2,7 +2,10 @@ package br.ueg.unucet.gymsys.View;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporterParameter;
@@ -33,6 +36,8 @@ import br.ueg.unucet.gymsys.Model.IModel;
 import br.ueg.unucet.gymsys.Model.Model;
 import br.ueg.unucet.gymsys.Util.Mensagembox;
 import br.ueg.unucet.gymsys.Util.Response;
+import br.ueg.unucet.gymsys.Util.Utils;
+import bsh.util.Util;
 
 @SuppressWarnings( "rawtypes")
 public abstract class ViewModel<M extends Model, C extends GenericController<M>> implements IViewModel {
@@ -65,6 +70,9 @@ public abstract class ViewModel<M extends Model, C extends GenericController<M>>
 		if(url != null && !url.equalsIgnoreCase("null") ){
 			if(url.equalsIgnoreCase("1")){
 				listar();
+			}
+			if(url.equalsIgnoreCase("2")){
+				logout();
 			}
 		}
 	}
@@ -183,8 +191,6 @@ public abstract class ViewModel<M extends Model, C extends GenericController<M>>
 				return false;
 			if (status.equalsIgnoreCase("onlineAluno"))
 				return true;
-			if (status.equalsIgnoreCase("onlineFuncionario"))
-				return true;
 			else
 				return false;
 		}
@@ -209,7 +215,10 @@ public abstract class ViewModel<M extends Model, C extends GenericController<M>>
 			msgbox.mensagemSucesso("Usuário logado com sucesso....");
 		}
 		if (msn.equalsIgnoreCase("2")) {
-			msgbox.mensagemError("Área restrita a funcionário...");
+			msgbox.mensagemError("Área restrita, Por gentileza logar no sistema...");
+		}
+		if (msn.equalsIgnoreCase("3")) {
+			msgbox.mensagemError("Por gentileza logar no sistema...");
 		}
 	}
 
@@ -263,6 +272,16 @@ public abstract class ViewModel<M extends Model, C extends GenericController<M>>
 	
 	public M getEntity() {
 		return entity;
+	}
+	
+	 private void logout() {
+		 Session session;
+		 session = Executions.getCurrent().getSession();
+		 session.removeAttribute("status");
+		 session.removeAttribute("idaluno");
+		 session.removeAttribute("aluno.idusuario");
+		 session.removeAttribute("idusuario");
+		 Executions.sendRedirect("/index.zul");
 	}
 
 }

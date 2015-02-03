@@ -14,6 +14,7 @@ import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.Session;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Vbox;
@@ -60,6 +61,13 @@ public class FichaTreinoViewModel extends
 	@Init
 	public void Init() {
 		super.init();
+		Session session;
+		session = Executions.getCurrent().getSession();
+		if(!verificarLoginIsAluno(session)){
+			if(!verificarLoginIsFuncionario(session)){
+				Executions.sendRedirect("/index.zul?msn=2");
+			}
+		}
 	}
 
 	@Override

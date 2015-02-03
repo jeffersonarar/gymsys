@@ -37,6 +37,13 @@ public class AlunoViewModel extends ViewModel<Aluno, AlunoController> {
 	public void Init(){		
     	super.init();
 		String idaluno;
+		Session session;
+		session = Executions.getCurrent().getSession();
+		if(!verificarLoginIsAluno(session)){
+			if(!verificarLoginIsFuncionario(session)){
+				Executions.sendRedirect("/index.zul?msn=2");
+			}
+		}
 		
 		idaluno = Executions.getCurrent().getParameter("idaluno");
 		if(idaluno!= null){
@@ -44,9 +51,6 @@ public class AlunoViewModel extends ViewModel<Aluno, AlunoController> {
 			setEntity(controller.getEntity(idaluno));
 			//keyword = getEntity().getSenha();
 		}
-	
-		Session session;
-		session = Executions.getCurrent().getSession();
 		String idUsuario = null;
 		idUsuario = (String) session.getAttribute("aluno.idusuario");
 		if(Executions.getCurrent().getSession().getAttribute("status")!=null){
