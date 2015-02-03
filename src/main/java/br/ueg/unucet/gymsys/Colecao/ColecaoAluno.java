@@ -90,7 +90,7 @@ public class ColecaoAluno {
 				}
 				
 				if((String) hashMap.get("celular")!= null){
-					aluno.setCelular(Integer.valueOf((String) hashMap.get("celular")));
+					aluno.setCelular((String) hashMap.get("celular"));
 				}
 				
 				if((String) hashMap.get("cintura")!= null){
