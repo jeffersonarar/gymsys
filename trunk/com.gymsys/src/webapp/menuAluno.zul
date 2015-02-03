@@ -8,8 +8,9 @@
               	
             </menupopup>
         </menu>
-   	    <menuitem label="Ficha de treino"  href="/fichaTreino/fichaTreinoAluno.zul?action=1" />
-        <menuitem label="Histórico"  href="/aluno/historicoAluno.zul?action=1"/>
+   	    <menuitem label="Ficha de treino"  href="/fichaTreino/fichaTreinoAluno.zul" onClick="@command('listarHistorico')"/>
+        <menuitem label="Histórico"  href="/aluno/historicoAluno.zul"/>
         <menuitem label="Consultar Exercício"  href="/aluno/listarexercicio.zul?action=1"/>
+        <menuitem label="Sair"  href="/aluno/dadosAluno.zul?action=2"/>
     </menubar>
 </zk>

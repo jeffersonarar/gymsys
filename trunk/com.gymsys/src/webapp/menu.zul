@@ -41,5 +41,6 @@
                 <menuitem label="Histórico"  href="/aluno/historico.zul"/>
             </menupopup>
         </menu>
+        <menuitem label="Sair"  href="/multimidia/frmMultimidia.zul?action=2"/>
     </menubar>
 </zk>
